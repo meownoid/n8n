@@ -561,11 +561,11 @@ export async function executeWebhook(
 					if (binaryData?.id) {
 						res.header(response.headers);
 						const stream = await Container.get(BinaryDataService).getAsStream(binaryData.id);
-						await pipeline(stream, res);
+						await pipeline(stream, res, { end: false });
 						responseCallback(null, { noWebhookResponse: true });
 					} else if (Buffer.isBuffer(response.body)) {
 						res.header(response.headers);
-						res.end(response.body);
+						res.write(response.body);
 						responseCallback(null, { noWebhookResponse: true });
 					} else {
 						// TODO: This probably needs some more changes depending on the options on the
@@ -594,6 +594,7 @@ export async function executeWebhook(
 						});
 					}
 
+					res.end();
 					didSendResponse = true;
 				})
 				.catch(async (error) => {
@@ -793,14 +794,15 @@ export async function executeWebhook(
 								res.setHeader('Content-Type', binaryData.mimeType);
 								if (binaryData.id) {
 									const stream = await Container.get(BinaryDataService).getAsStream(binaryData.id);
-									await pipeline(stream, res);
+									await pipeline(stream, res, { end: false });
 								} else {
-									res.end(Buffer.from(binaryData.data, BINARY_ENCODING));
+									res.write(Buffer.from(binaryData.data, BINARY_ENCODING));
 								}
 
 								responseCallback(null, {
 									noWebhookResponse: true,
 								});
+								res.end();
 							}
 						} else if (responseData === 'noData') {
 							// Return without data
