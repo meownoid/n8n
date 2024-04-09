@@ -198,7 +198,7 @@
             "accept-language": "en-US,en;q=0.5",
             "accept-encoding": "gzip, deflate, br",
             "connection": "keep-alive",
-            "cookie": "n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1YWQzODQ1LWFmMTAtNDc2OC04ZDU4LTBmNDE3YTVlNDkxNSIsImVtYWlsIjoiamFuQG44bi5pbyIsInBhc3N3b3JkIjoiMzhjMTFiMDEwMjRlMDhiZTE0ZGExZjhmOWVjNGFmOTQxZmQwOGUyMzJmNWEzYmMyNjBmOTI1ZjIxNTBhNTZlYSIsImlhdCI6MTcwNzA3ODgxMSwiZXhwIjoxNzA3NjgzNjExfQ.bhbh8gCbLYAY87kPqZSGZeMBq7_4d9IgKnsrJ0UV4Iw",
+            "cookie": "__HOST-n8n-auth=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ1YWQzODQ1LWFmMTAtNDc2OC04ZDU4LTBmNDE3YTVlNDkxNSIsImVtYWlsIjoiamFuQG44bi5pbyIsInBhc3N3b3JkIjoiMzhjMTFiMDEwMjRlMDhiZTE0ZGExZjhmOWVjNGFmOTQxZmQwOGUyMzJmNWEzYmMyNjBmOTI1ZjIxNTBhNTZlYSIsImlhdCI6MTcwNzA3ODgxMSwiZXhwIjoxNzA3NjgzNjExfQ.bhbh8gCbLYAY87kPqZSGZeMBq7_4d9IgKnsrJ0UV4Iw",
             "upgrade-insecure-requests": "1",
             "sec-fetch-dest": "document",
             "sec-fetch-mode": "navigate",
