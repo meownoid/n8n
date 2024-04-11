@@ -157,7 +157,9 @@ export class WorkflowsController {
 		await this.externalHooks.run('workflow.afterCreate', [savedWorkflow]);
 		void this.internalHooks.onWorkflowCreated(req.user, newWorkflow, false);
 
-		return savedWorkflow;
+		const scopes = await this.workflowService.getWorkflowScopes(req.user, savedWorkflow.id);
+
+		return { ...savedWorkflow, scopes };
 	}
 
 	@Get('/', { middlewares: listQueryMiddleware })
@@ -259,7 +261,9 @@ export class WorkflowsController {
 
 			await enterpriseWorkflowService.addCredentialsToWorkflow(workflowWithMetaData, req.user);
 
-			return workflowWithMetaData;
+			const scopes = await this.workflowService.getWorkflowScopes(req.user, workflowId);
+
+			return { ...workflowWithMetaData, scopes };
 		}
 
 		// sharing disabled
@@ -281,7 +285,9 @@ export class WorkflowsController {
 			);
 		}
 
-		return workflow;
+		const scopes = await this.workflowService.getWorkflowScopes(req.user, workflowId);
+
+		return { ...workflow, scopes };
 	}
 
 	@Patch('/:workflowId')
@@ -311,7 +317,9 @@ export class WorkflowsController {
 			isSharingEnabled ? forceSave : true,
 		);
 
-		return updatedWorkflow;
+		const scopes = await this.workflowService.getWorkflowScopes(req.user, workflowId);
+
+		return { ...updatedWorkflow, scopes };
 	}
 
 	@Delete('/:workflowId')
