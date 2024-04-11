@@ -329,7 +329,7 @@ describe('GET /projects/personal', () => {
 
 		const resp = await memberAgent.get('/projects/personal');
 		expect(resp.status).toBe(200);
-		const respProject = resp.body.data as Project;
+		const respProject = resp.body.data as Project & { scopes: Scope[] };
 		expect(respProject.id).toEqual(project.id);
 	});
 
